@@ -1,0 +1,39 @@
+﻿syntax = "proto3";
+option csharp_namespace = "Utilities.Protos";
+
+import "google/protobuf/wrappers.proto";
+
+message StringMatch {
+  oneof match_type {
+    string exact = 1;
+    string starts_with = 2;
+    string contains = 3;
+  }
+}
+
+message DateMatch {
+  message DateRange {
+    message RelativeDateRange {
+      // Offset in days from today (current date at GMT) or null for unbounded
+      google.protobuf.Int32Value start_date = 1;
+      // Offset in days from today (current date at GMT) or null for unbounded
+      google.protobuf.Int32Value end_date = 2;
+      string timezone = 3;
+    }
+    message AbsoluteDateRange {
+      // Greater than or equals >=
+      string on_or_after = 1;
+      // Less than (NOT equal) <
+      string before = 2;
+      google.protobuf.BoolValue include_time = 3;
+    }
+    oneof range_type {
+      RelativeDateRange relative = 1;
+      AbsoluteDateRange absolute = 2;
+    }
+  }
+  oneof match_type {
+    string exact = 1;
+    DateRange range = 2;
+  }
+}
