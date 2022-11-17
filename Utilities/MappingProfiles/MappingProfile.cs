@@ -3,6 +3,7 @@ using Humanizer;
 using System.Globalization;
 using Utilities.Models;
 using api = Utilities.Protos;
+using MatchType = Utilities.Models.MatchType;
 
 namespace Utilities.MappingProfiles
 {

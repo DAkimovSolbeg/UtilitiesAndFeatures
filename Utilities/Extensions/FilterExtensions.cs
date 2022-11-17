@@ -3,6 +3,7 @@ using Utilities.Models;
 using Utilities.Interfaces;
 using api = Utilities.Protos;
 using Utilities.Helpers;
+using MatchType = Utilities.Models.MatchType;
 
 namespace Utilities.Extensions
 {
